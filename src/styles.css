@@ -1,0 +1,566 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #4b1496;
+  background: #fbfcfb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --purple: #54149b;
+  --purple-dark: #431080;
+  --lavender: #8d86f6;
+  --panel: #eef0f8;
+  --page: #fbfcfb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--page);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  width: min(980px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 56px 0 48px;
+}
+
+.app__header {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--purple);
+}
+
+.brand__plane {
+  width: 92px;
+  height: 70px;
+  flex: 0 0 auto;
+}
+
+.brand__title {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.app__layout {
+  display: grid;
+  grid-template-columns: 236px minmax(0, 1fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.app__main {
+  min-width: 0;
+}
+
+.sort-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 24px;
+  border: 1px solid var(--purple);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sort-tabs__button {
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 0;
+  border-right: 1px solid var(--purple);
+  background: transparent;
+  color: var(--purple);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sort-tabs__button:last-child {
+  border-right: 0;
+}
+
+.sort-tabs__button_active {
+  background: var(--purple);
+  color: #fff;
+}
+
+.desktop-filters {
+  display: block;
+}
+
+.filters-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.filters-content__group {
+  margin: 0;
+  padding: 18px 16px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.filters-content__title {
+  position: relative;
+  top: 30px;
+
+  width: 100%;
+  margin: 0 0 28px;
+  padding: 0;
+  color: var(--purple);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.filters-content__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  color: var(--lavender);
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filters-content__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.filters-content__control {
+  position: relative;
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  border: 1.5px solid var(--purple);
+  border-radius: 4px;
+  background: #fff;
+}
+.filters-content__group_type_companies .filters-content__control {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border: 1.5px solid var(--purple);
+  border-radius: 50%;
+  background: #fff;
+}
+.filters-content__group_type_companies
+  .filters-content__input
+  + .filters-content__control::after {
+  content: none;
+}
+.filters-content__group_type_companies
+  .filters-content__input:checked
+  + .filters-content__control::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 12px;
+  height: 12px;
+
+  border: none;
+  border-radius: 50%;
+  background: var(--purple);
+
+  transform: translate(-50%, -50%);
+}
+.filters-content__input:checked + .filters-content__control::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--purple);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.mobile-filters {
+  display: none;
+}
+
+.tickets {
+  display: grid;
+  gap: 40px;
+}
+
+.ticket-card {
+  min-height: 150px;
+  padding: 26px 34px 24px;
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.ticket-card__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  align-items: center;
+  min-height: 50px;
+}
+
+.ticket-card__price {
+  color: var(--purple);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 0.2px;
+}
+
+.ticket-card__details {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 0.85fr;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+.ticket-card__detail {
+  display: grid;
+  gap: 6px;
+}
+
+.ticket-card__label {
+  color: var(--lavender);
+  font-size: 14px;
+}
+
+.ticket-card__value {
+  color: var(--purple);
+  font-size: 14px;
+}
+
+.company-logo {
+  display: block;
+  justify-self: center;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin: 0;
+}
+
+
+.load-more {
+  width: 100%;
+  min-height: 54px;
+  margin-top: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.load-more:hover {
+  background: var(--purple-dark);
+}
+
+.status-message {
+  padding: 36px 24px;
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--purple);
+  text-align: center;
+}
+
+.status-message_error button {
+  margin-top: 10px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--purple);
+  color: #fff;
+}
+
+@media (max-width: 800px) {
+  .app {
+    width: 100%;
+    padding: 18px 36px 42px;
+  }
+
+  .app__header {
+    min-height: 120px;
+    justify-content: center;
+  }
+
+  .brand__plane {
+    width: 72px;
+    height: 54px;
+  }
+
+  .brand__title,
+  .desktop-filters {
+    display: none;
+  }
+
+  .app__layout {
+    display: block;
+  }
+
+  .sort-tabs {
+    margin-bottom: 12px;
+  }
+
+  .mobile-filters {
+    display: block;
+    margin-bottom: 34px;
+    border-radius: 10px;
+    background: var(--purple);
+    color: #fff;
+  }
+
+  .mobile-filters__toggle {
+    width: 100%;
+    min-height: 44px;
+    display: grid;
+    grid-template-columns: 1fr auto 24px;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 22px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--purple);
+    color: #fff;
+    text-align: left;
+  }
+
+  .mobile-filters_open .mobile-filters__toggle {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .mobile-filters__summary {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .mobile-filters__action {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .mobile-filters__chevron {
+    width: 14px;
+    height: 14px;
+    border-right: 3px solid currentColor;
+    border-bottom: 3px solid currentColor;
+    transform: rotate(45deg) translateY(-3px);
+    transition: transform 0.18s ease;
+  }
+
+  .mobile-filters_open .mobile-filters__chevron {
+    transform: rotate(225deg) translate(-2px, -2px);
+  }
+
+  .mobile-filters__panel {
+    padding: 0 22px 22px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 5px 7px rgb(38 14 64 / 25%);
+  }
+
+  .filters-content_compact {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 30px;
+  }
+
+  .filters-content_compact .filters-content__group {
+    padding: 0;
+    background: transparent;
+  }
+
+  .filters-content_compact .filters-content__title,
+  .filters-content_compact .filters-content__option {
+    color: #fff;
+  }
+
+  .filters-content_compact .filters-content__title {
+    font-size: 20px;
+  }
+
+  .filters-content_compact .filters-content__control {
+    border-color: #fff;
+    background: transparent;
+  }
+
+  .filters-content_compact
+    .filters-content__input:checked
+    + .filters-content__control::after {
+    border-color: #fff;
+  }
+
+  .tickets {
+    gap: 34px;
+  }
+
+  .ticket-card {
+    min-height: 174px;
+    padding: 34px 24px 28px;
+  }
+
+  .ticket-card__top {
+    min-height: 54px;
+  }
+
+  .ticket-card__price {
+    font-size: 34px;
+  }
+
+  .ticket-card__details {
+    margin-top: 14px;
+    gap: 20px;
+  }
+
+  .ticket-card__label,
+  .ticket-card__value {
+    font-size: 14px;
+  }
+
+  .load-more {
+    min-height: 62px;
+    margin-top: 52px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app {
+    padding: 16px 16px 38px;
+  }
+
+  .app__header {
+    min-height: 92px;
+  }
+
+  .brand__plane {
+    width: 64px;
+    height: 48px;
+  }
+
+  .sort-tabs__button {
+    min-height: 42px;
+    padding: 8px 7px;
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .mobile-filters {
+    margin-bottom: 24px;
+  }
+
+  .mobile-filters__toggle {
+    grid-template-columns: 1fr 20px;
+    padding: 8px 16px;
+  }
+
+  .mobile-filters__action {
+    display: none;
+  }
+
+  .mobile-filters__summary {
+    font-size: 12px;
+  }
+
+  .mobile-filters__panel {
+    padding: 0 16px 18px;
+  }
+
+  .filters-content_compact {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .filters-content_compact .filters-content__title {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .filters-content_compact .filters-content__option {
+    min-height: 30px;
+    font-size: 13px;
+  }
+
+  .tickets {
+    gap: 34px;
+  }
+
+  .ticket-card {
+    min-height: 174px;
+    padding: 42px 22px 24px;
+  }
+
+  .ticket-card__top {
+    min-height: 44px;
+    align-items: flex-start;
+  }
+
+  .ticket-card__price {
+    font-size: 31px;
+  }
+
+  .ticket-card__details {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .ticket-card__label,
+  .ticket-card__value {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .company-logo_pobeda {
+    font-size: 20px;
+  }
+
+  .company-logo_red-wings {
+    gap: 5px;
+    font-size: 15px;
+  }
+
+  .company-logo__wing {
+    width: 28px;
+  }
+
+  .company-logo_s7 {
+    gap: 4px;
+    font-size: 14px;
+  }
+
+  .company-logo__s7-mark {
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+  }
+
+  .load-more {
+    min-height: 62px;
+    margin-top: 52px;
+    font-size: 23px;
+  }
+}
